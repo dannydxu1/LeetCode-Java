@@ -7,13 +7,16 @@
 // @lc code=start
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        for (int i = 0; i < numbers.length-1; i++) {
-            int indexA = i;
-            for (int j = i + 1; j < numbers.length; j++) {
-                int indexB = j;
-                if (numbers[indexA] + numbers[indexB] == target) {
-                    return new int[] { indexA + 1, indexB + 1 };
-                }
+        int leftPtr =0;
+        int rightPtr = numbers.length - 1;
+        for (int i = 0; i < numbers.length; i++) {
+            int sum = numbers[leftPtr] + numbers[rightPtr];
+            if (sum > target) {
+                rightPtr--;
+            } else if (sum < target) {
+                  leftPtr++;
+              } else {
+                  return new int[] { leftPtr+1, rightPtr+1};
             }
         }
         return new int[] {};
