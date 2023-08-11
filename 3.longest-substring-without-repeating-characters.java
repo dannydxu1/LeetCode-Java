@@ -12,31 +12,18 @@ class Solution {
         int max = 0;
         int lptr = 0;
         int rptr = 0;
-        if (s.length() <= 1)
-            return s.length();
-        while (rptr < s.length()-1) {
-            char left = s.charAt(lptr);
-            char right = s.charAt(rptr);
-            System.out.println("left: "+left+" right: "+right);
-            if (hs.contains(right) == false) {
-                System.out.println("added "+right);
-                hs.add(right);
-                max = Math.max(rptr - lptr + 1, max);
+        for (; lptr <s.length(); lptr++) {
+            rptr = lptr;
+            while (rptr<s.length() && hs.contains(s.charAt(rptr)) == false) {
+                hs.add(s.charAt(rptr));
+                max = Math.max(max, rptr-lptr+1);
                 rptr++;
-            } else {
-                hs.clear();
-                System.out.println("cleared cleared of duplicate "+right);
-                lptr++;
-                while (s.charAt(lptr)==s.charAt(lptr+1) && lptr<s.length()-1){
-                    lptr++;
-                }
-                rptr = lptr++;
-                System.out.println("left index: "+lptr+" right index: "+rptr);
-                hs.add(left);
             }
+            hs.clear();
         }
         return max;
     }
+
 }
 // @lc code=end
 
