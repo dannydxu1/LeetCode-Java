@@ -7,7 +7,33 @@
 // @lc code=start
 import java.util.*;
 class Solution {
+    // abbcd | 3 
+    // ababcd | 4
+    // abcabcbb | 3 
     public int lengthOfLongestSubstring(String s) {
+        //sliding window approach, only interate across once
+        HashSet<Character> hs = new HashSet<Character>();
+        int max = 0;
+        int lptr = 0;
+        int rptr = 0;
+        int len = s.length();
+        while (rptr < len){
+            char r = s.charAt(rptr);
+            if (hs.contains(r) == false){
+                hs.add(s.charAt(rptr));
+                max = Math.max(rptr-lptr+1, max);
+                rptr++;
+            } else {
+                while (lptr < rptr && hs.contains(r) == true){
+                    hs.remove(s.charAt(lptr));
+                    lptr++;
+                }
+            }
+        }
+        return max;
+    }
+
+    public int slowApproach(String s) {
         HashSet<Character> hs = new HashSet<Character>();
         int max = 0;
         int lptr = 0;
