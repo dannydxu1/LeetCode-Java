@@ -9,20 +9,20 @@ import java.util.*;
 
 class Solution {
     public int maxProfit(int[] prices) {
-        int max = 0;
+        //l2,1,r4,0
         int lptr = 0;
         int rptr = 0;
-        while (rptr < prices.length) {
-            if (prices[lptr] >= prices[rptr]) {
+        int max = 0;
+        while (rptr < prices.length){
+            if (prices[rptr] <  prices[lptr]) {
                 lptr = rptr;
-                rptr ++;
             } else {
-                max = Math.max((prices[rptr] - prices[lptr]), max);
+                max = Math.max(prices[rptr]-prices[lptr], max);
                 rptr++;
             }
-
         }
         return max;
+
     }
 }
 // @lc code=end
