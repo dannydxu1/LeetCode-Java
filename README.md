@@ -9,7 +9,7 @@ This repo is a collection of (hopefully) efficient solutions to various problems
 
 ## Contact
 
-For any questions or feedback, please reach out through [my GitHub profile](https://github.com/yourusername).
+For any questions or feedback, please reach out through [my GitHub profile](https://github.com/dannydxu1).
 
 ---
 
