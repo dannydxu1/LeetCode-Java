@@ -7,31 +7,24 @@
 // @lc code=start
 class Solution {
     public void moveZeroes(int[] nums) {
-        for ( int i = 0 ; i < nums.length; i++){
-            if (nums[i] != 0){
-                continue;
+
+        // 1 a0 0 b2
+        //ensures a is on zero while b is always on non zero before swapping occurs
+        //each pointer is attracted to their respective sides
+        int p1 = 0;
+        int p2 = 0;
+        while (p2 < nums.length){
+            if (nums[p2] != 0){ //b!=0
+                //swap
+                int temp = nums[p1];
+                nums[p1] = nums[p2];
+                nums[p2] = temp;
+                p1++;
+                p2++;
             } else {
-                System.out.println(nums[i]);
-                int index = i;
-                while (index < nums.length - 1){
-                    int lval = nums[index];
-                    int temp = nums[index+1];
-                    int rval = lval;
-                    lval = temp;
-                    nums[index] = lval;
-                    nums[index+1] = rval;
-                    index++;
-                    printArr(nums);
-                }
+                p2 ++;
             }
         }
-    }
-
-    public void printArr(int[] arr){
-        for (int i = 0 ; i < arr.length ;i++){
-            System.out.print(arr[i]+", ");
-        }
-        System.out.println();
     }
 }
 // @lc code=end
