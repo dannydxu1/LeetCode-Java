@@ -7,19 +7,27 @@
 // @lc code=start
 class Solution {
     public int maxSubArray(int[] nums) {
-        int curr = nums[0];
-        int max = nums[0];
-        for (int i = 1; i < nums.length; i++){
-            curr = Math.max(nums[i], nums[i]+curr);
-            max = Math.max(max, curr);
+      /**
+       * -2,1,-3,4,-1,2,1,-5,4
+       * basically just need to figure out whether to stop or keep going
+       * cant go backwards
+       * curr = 1
+       * max = 1
+       * 
+       */
+      int curr = nums[0];
+      int max = curr;
+      for (int i = 1; i < nums.length; i++){
+        int temp = nums[i];
+        if (temp+curr < temp){
+            curr = temp;
+        } else {
+            curr += temp;
         }
-        return max;
+            max = Math.max(max, curr);
+    }
+      return max;
     }
 }
 // @lc code=end
 
-/*
- * 1,2,-4,5
- * curruntSum = 5 vs 4
- * maxSum = 5
- */
